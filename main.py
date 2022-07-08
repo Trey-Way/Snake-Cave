@@ -16,7 +16,9 @@ def display_score():
     return current_time
 
 # SecondPhase
-second_phase == NULL
+second_phase = False
+if second_phase == True:
+    print('Second Phase Active')
 
 def obstacle_movement(obstacle_list):
     global second_phase
@@ -31,24 +33,25 @@ def obstacle_movement(obstacle_list):
                 screen.blit(bat_surf,obstacle_rect)
                 obstacle_rect.x -= 9
             
-            if current_time >= 5:
+            if current_time >= 15:
                 second_phase == True
                 if obstacle_rect.bottom == 300:
-                    obstacle_rect.x -= 15
+                    obstacle_rect.x -= 8
+                else: 
+                    obstacle_rect.x -= 11
+            if current_time >= 30:
+                if obstacle_rect.bottom == 300:
+                    obstacle_rect.x -= 10
                 else: 
                     obstacle_rect.x -= 10
             
-            if second_phase == True:
-                print('Second Phase Active')
-        
-    
-
-
-
-        obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x > 0]
+         
+        obstacle_list = [obstacle for obstacle in obstacle_list if obstacle.x > -10]
 
         return obstacle_list
     else: return []
+
+
 
 def collisions(player,obstacles):
     if obstacles:
